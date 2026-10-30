@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../assets/img/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: initial;
+}
+
+.container-fluid {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0%;
+    margin: 0%;
+}
+
+.navbar-expand-lg, .navbar-toggler, .d-flex, .navbar-toggler, .navbar-collapse, .navbar-nav, .nav-item {
+    padding: 0%;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.bg-body-tertiary{
+    background-color: rgba(0, 0, 0, 0);
+}
