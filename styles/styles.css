@@ -9,6 +9,7 @@
     --sakura: #ff8fb0;
     --sakura-deep: #ff4f86;
     --sun: #ffc24a;
+    --display: "Yuji Boku", "Shippori Mincho", "Hiragino Mincho ProN", serif;
 }
 
 body {
@@ -49,26 +50,104 @@ body {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.container-fluid {
-    padding: 0 1.5rem;
+/* Navbar */
+.sakura-nav {
+    position: relative;
+    padding: .7rem 0 .9rem;
+    background: linear-gradient(180deg, rgba(29, 20, 66, .85) 0%, rgba(29, 20, 66, .45) 70%, rgba(29, 20, 66, 0) 100%);
+    backdrop-filter: blur(3px);
+}
+
+/* Línea dorada y bermellón con rombo central */
+.sakura-nav::after {
+    content: "";
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--vermilion) 20%, var(--sun) 50%, var(--vermilion) 80%, transparent);
+}
+
+.sakura-nav::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 10px;
+    height: 10px;
+    background: var(--sun);
+    transform: translateX(-50%) rotate(45deg);
+    box-shadow: 0 0 10px rgba(255, 194, 74, .8);
+    z-index: 1;
+}
+
+.sakura-nav .container-fluid {
+    padding: 0 2rem;
+    justify-content: space-between;
 }
 
 .brand-mark {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+}
+
+.hanko {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background: var(--vermilion);
+    color: var(--paper);
+    font-size: 1.7rem;
     font-weight: 800;
-    letter-spacing: .12em;
-    text-shadow: 0 2px 10px rgba(29, 20, 66, .8);
+    border-radius: 6px;
+    transform: rotate(-5deg);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .45), inset 0 0 0 2px rgba(255, 255, 255, .25);
 }
 
-.nav-link {
-    font-weight: 600;
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    text-shadow: 0 2px 10px rgba(29, 20, 66, .9);
+}
+
+.brand-text strong {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.55rem;
     letter-spacing: .08em;
-    margin-left: 1rem;
-    text-shadow: 0 2px 8px rgba(29, 20, 66, .85);
-    transition: color .2s;
 }
 
-.nav-link:hover, .nav-link.active {
+.brand-text small {
+    font-size: .8rem;
+    letter-spacing: .25em;
     color: var(--sun);
+}
+
+.nav-motto {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    letter-spacing: .1em;
+    color: var(--paper);
+    text-shadow: 0 2px 10px rgba(29, 20, 66, .9);
+}
+
+.nav-motto em {
+    font-style: normal;
+    color: var(--vermilion);
+    background: var(--paper);
+    padding: 0 .3rem;
+    margin-left: .3rem;
+    border-radius: 3px;
+}
+
+@media (max-width: 576px) {
+    .nav-motto { display: none; }
+    .sakura-nav .container-fluid { padding: 0 1rem; }
 }
 
 /* Escenario */
@@ -89,9 +168,10 @@ body {
 }
 
 .hero h1 {
+    font-family: var(--display);
     font-size: clamp(2.4rem, 7vw, 5.5rem);
-    font-weight: 800;
-    letter-spacing: .16em;
+    font-weight: 400;
+    letter-spacing: .12em;
     margin: 0;
     text-shadow: 0 4px 24px rgba(29, 20, 66, .85);
 }
@@ -257,8 +337,9 @@ body {
 }
 
 .scroll-card h2 {
-    font-size: 1.6rem;
-    font-weight: 800;
+    font-family: var(--display);
+    font-size: 1.8rem;
+    font-weight: 400;
     margin: 1rem 0 .7rem;
 }
 
