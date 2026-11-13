@@ -2,12 +2,36 @@
     box-sizing: border-box;
 }
 
+:root {
+    --indigo: #1d1442;
+    --paper: #f6ecdc;
+    --vermilion: #d8322b;
+    --sakura: #ff8fb0;
+    --sakura-deep: #ff4f86;
+    --sun: #ffc24a;
+}
+
 body {
     background-image: url("../assets/img/background.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-position: initial;
+    background-attachment: fixed;
+    background-color: var(--indigo);
+    min-height: 100vh;
+    font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+    color: var(--paper);
+    overflow-x: hidden;
+}
+
+/* Video opcional */
+#bg-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .container-fluid {
@@ -16,11 +40,220 @@ body {
     margin: 0%;
 }
 
-.navbar-expand-lg, .navbar-toggler, .d-flex, .navbar-toggler, .navbar-collapse, .navbar-nav, .nav-item {
+.navbar-expand-lg, .navbar-toggler, .d-flex, .navbar-collapse, .navbar-nav, .nav-item {
     padding: 0%;
     background-color: rgba(0, 0, 0, 0);
 }
 
-.bg-body-tertiary{
+.bg-body-tertiary {
     background-color: rgba(0, 0, 0, 0);
+}
+
+.container-fluid {
+    padding: 0 1.5rem;
+}
+
+.brand-mark {
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-shadow: 0 2px 10px rgba(29, 20, 66, .8);
+}
+
+.nav-link {
+    font-weight: 600;
+    letter-spacing: .08em;
+    margin-left: 1rem;
+    text-shadow: 0 2px 8px rgba(29, 20, 66, .85);
+    transition: color .2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--sun);
+}
+
+/* Escenario */
+.stage {
+    position: relative;
+    height: calc(100vh - 70px);
+    min-height: 520px;
+}
+
+.hero {
+    position: absolute;
+    top: 6%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    pointer-events: none;
+    padding: 0 1rem;
+}
+
+.hero h1 {
+    font-size: clamp(2.4rem, 7vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: .16em;
+    margin: 0;
+    text-shadow: 0 4px 24px rgba(29, 20, 66, .85);
+}
+
+.hero p {
+    margin: .4rem 0 0;
+    font-size: clamp(.95rem, 1.6vw, 1.2rem);
+    letter-spacing: .1em;
+    text-shadow: 0 2px 12px rgba(29, 20, 66, .9);
+}
+
+.progress-count {
+    color: var(--sun);
+    font-weight: 600;
+}
+
+/* Pétalos interactivos */
+.petals {
+    position: absolute;
+    inset: 0;
+}
+
+.petal {
+    position: absolute;
+    width: 68px;
+    height: 68px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: var(--d, 0s);
+}
+
+.petal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 100% 0 100% 0;
+    background: radial-gradient(circle at 30% 30%, #fff1f5 0%, var(--sakura) 45%, var(--sakura-deep) 100%);
+    box-shadow: 0 0 22px rgba(255, 143, 176, .75);
+    transform: rotate(var(--r, 20deg));
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.petal span {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #6b1238;
+    pointer-events: none;
+}
+
+.petal:hover::before, .petal:focus-visible::before {
+    transform: rotate(calc(var(--r, 20deg) + 25deg)) scale(1.18);
+    box-shadow: 0 0 36px rgba(255, 210, 120, .95);
+}
+
+.petal:focus-visible {
+    outline: 2px solid var(--sun);
+    outline-offset: 6px;
+    border-radius: 50%;
+}
+
+.petal.seen::before {
+    filter: saturate(.35) brightness(.8);
+    box-shadow: 0 0 10px rgba(255, 143, 176, .3);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+/* Pétalos decorativos cayendo */
+.falling {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.fall {
+    position: absolute;
+    top: -30px;
+    width: 12px;
+    height: 12px;
+    border-radius: 100% 0 100% 0;
+    background: linear-gradient(135deg, #fff1f5, var(--sakura));
+    opacity: .85;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translate(var(--x, 80px), 110vh) rotate(540deg); }
+}
+
+/* Panel tipo pergamino */
+.scroll-card {
+    background: var(--paper);
+    color: #2a1a1a;
+    border: 0;
+    border-top: 8px solid var(--vermilion);
+    border-bottom: 8px solid var(--vermilion);
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(29, 20, 66, .7);
+}
+
+.scroll-card .modal-body {
+    padding: 2rem 2rem 1.6rem;
+    text-align: center;
+}
+
+.seal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    background: var(--vermilion);
+    color: var(--paper);
+    font-size: 1.8rem;
+    font-weight: 800;
+    border-radius: 6px;
+    transform: rotate(-4deg);
+}
+
+.scroll-card h2 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin: 1rem 0 .6rem;
+}
+
+.scroll-card p {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    max-width: 52ch;
+    margin: 0 auto 1.4rem;
+}
+
+.btn-close-sakura {
+    background: none;
+    border: 1px solid #2a1a1a;
+    padding: .4rem 1.4rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+}
+
+.btn-close-sakura:hover {
+    background: #2a1a1a;
+    color: var(--paper);
+}
+
+@media (max-width: 576px) {
+    .petal { width: 54px; height: 54px; }
+    .petal span { font-size: 1.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .petal, .fall { animation: none; }
+    .fall { display: none; }
 }
