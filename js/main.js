@@ -1,14 +1,23 @@
-// EDITA AQUÍ tus 9 contenidos. x / y = posición en % de la pantalla.
+
 const items = [
-    { kanji: "一", title: "Sobre mí",     text: "Escribe aquí tu información.", x: 8,  y: 38 },
-    { kanji: "二", title: "Proyectos",    text: "Escribe aquí tu información.", x: 22, y: 24 },
-    { kanji: "三", title: "Habilidades",  text: "Escribe aquí tu información.", x: 38, y: 40 },
-    { kanji: "四", title: "Experiencia",  text: "Escribe aquí tu información.", x: 52, y: 26 },
-    { kanji: "五", title: "Educación",    text: "Escribe aquí tu información.", x: 66, y: 42 },
-    { kanji: "六", title: "Servicios",    text: "Escribe aquí tu información.", x: 80, y: 28 },
-    { kanji: "七", title: "Herramientas", text: "Escribe aquí tu información.", x: 88, y: 50 },
-    { kanji: "八", title: "Testimonios",  text: "Escribe aquí tu información.", x: 58, y: 62 },
-    { kanji: "九", title: "Contacto",     text: "Escribe aquí tu información.", x: 30, y: 62 }
+    { kanji: "一", title: "Estructura y sintaxis", x: 8,  y: 38,
+      text: "Una regla CSS tiene <b>selector</b>, <b>propiedad</b> y <b>valor</b>.<code>h1 { color: red; }</code>" },
+    { kanji: "二", title: "Tipos de incorporación", x: 22, y: 24,
+      text: "<b>Interno</b>: etiqueta &lt;style&gt; en el head. <b>Externo</b>: archivo .css con &lt;link&gt; (el más recomendado). <b>En línea</b>: atributo style en la etiqueta." },
+    { kanji: "三", title: "Identación, herencia y comentarios", x: 38, y: 40,
+      text: "Indentar hace el código legible. Los hijos heredan algunas propiedades del padre (color, font).<code>/* Esto es un comentario */</code>" },
+    { kanji: "四", title: "Niveles de especificidad", x: 52, y: 26,
+      text: "Gana la regla más específica: <b>en línea</b> &gt; <b>#id</b> &gt; <b>.clase</b> &gt; <b>etiqueta</b>. <code>!important</code> pasa sobre todas." },
+    { kanji: "五", title: "Flexbox, Grid y breakpoints", x: 66, y: 42,
+      text: "<b>Flexbox</b> ordena en una dimensión y <b>Grid</b> en filas y columnas. Los <b>breakpoints</b> son los anchos donde el diseño cambia." },
+    { kanji: "六", title: "Media queries", x: 80, y: 28,
+      text: "Aplican estilos según el tamaño o tipo de pantalla.<code>@media (max-width: 768px) { ... }</code>" },
+    { kanji: "七", title: "Pseudo elementos", x: 88, y: 50,
+      text: "Estilizan o crean partes de un elemento.<code>p::first-letter  ·  div::before  ·  div::after</code>" },
+    { kanji: "八", title: "Pseudo clases", x: 58, y: 62,
+      text: "Estilizan según el estado o la posición del elemento.<code>a:hover  ·  input:focus  ·  li:nth-child(2)</code>" },
+    { kanji: "九", title: "Z-index", x: 30, y: 62,
+      text: "Define qué elemento queda encima de otro. Solo funciona si el elemento tiene <b>position</b> distinto de static.<code>z-index: 10;</code>" }
 ];
 
 const container = document.getElementById("petals");
@@ -31,7 +40,7 @@ items.forEach((item, i) => {
     btn.addEventListener("click", () => {
         document.getElementById("infoKanji").textContent = item.kanji;
         document.getElementById("infoTitle").textContent = item.title;
-        document.getElementById("infoText").textContent = item.text;
+        document.getElementById("infoText").innerHTML = item.text;
         modal.show();
         btn.classList.add("seen");
         seen.add(i);
