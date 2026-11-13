@@ -1,23 +1,23 @@
-
+// EDITA AQUÍ tus 9 contenidos. x / y = posición en % de la pantalla.
 const items = [
     { kanji: "一", title: "Estructura y sintaxis", x: 8,  y: 38,
-      text: "Una regla CSS tiene <b>selector</b>, <b>propiedad</b> y <b>valor</b>.<code>h1 { color: red; }</code>" },
+      text: "Una regla CSS se compone de un <b>selector</b> (a quién afecta) y un bloque entre llaves con <b>propiedades</b> y <b>valores</b> (qué cambia). Cada declaración termina en punto y coma, y puedes agrupar varios selectores separándolos con comas.<code>h1, h2 {\n  color: red;\n  font-size: 2rem;\n}</code>" },
     { kanji: "二", title: "Tipos de incorporación", x: 22, y: 24,
-      text: "<b>Interno</b>: etiqueta &lt;style&gt; en el head. <b>Externo</b>: archivo .css con &lt;link&gt; (el más recomendado). <b>En línea</b>: atributo style en la etiqueta." },
+      text: "<b>Interno</b>: etiqueta &lt;style&gt; dentro del head, útil para pruebas rápidas. <b>Externo</b>: archivo .css enlazado con &lt;link&gt;; es reutilizable y el más recomendado. <b>En línea</b>: atributo style, afecta a una sola etiqueta y es difícil de mantener.<code>&lt;link rel='stylesheet' href='styles.css'&gt;</code>" },
     { kanji: "三", title: "Identación, herencia y comentarios", x: 38, y: 40,
-      text: "Indentar hace el código legible. Los hijos heredan algunas propiedades del padre (color, font).<code>/* Esto es un comentario */</code>" },
+      text: "Indentar con 2 o 4 espacios muestra qué pertenece a qué. La <b>herencia</b> hace que los hijos reciban del padre propiedades como color y font-family (pero no margin ni border). Los <b>comentarios</b> no se ejecutan: explican o desactivan código.<code>body { color: navy; }  /* los p heredan este color */</code>" },
     { kanji: "四", title: "Niveles de especificidad", x: 52, y: 26,
-      text: "Gana la regla más específica: <b>en línea</b> &gt; <b>#id</b> &gt; <b>.clase</b> &gt; <b>etiqueta</b>. <code>!important</code> pasa sobre todas." },
+      text: "El navegador elige la regla de más peso: <b>en línea</b> (1000), <b>#id</b> (100), <b>.clase</b> y pseudo-clases (10), <b>etiqueta</b> (1). Si empatan, gana la última escrita. <code>!important</code> rompe este orden; úsalo solo como último recurso.<code>p  &lt;  .nota  &lt;  #intro  &lt;  style=''</code>" },
     { kanji: "五", title: "Flexbox, Grid y breakpoints", x: 66, y: 42,
-      text: "<b>Flexbox</b> ordena en una dimensión y <b>Grid</b> en filas y columnas. Los <b>breakpoints</b> son los anchos donde el diseño cambia." },
+      text: "<b>Flexbox</b> acomoda elementos en una sola dirección (fila o columna). <b>Grid</b> maneja filas y columnas a la vez. Los <b>breakpoints</b> son los anchos donde el diseño cambia; en Bootstrap: 576, 768, 992, 1200 y 1400 px.<code>.caja {\n  display: flex;\n  justify-content: center;\n  gap: 1rem;\n}</code>" },
     { kanji: "六", title: "Media queries", x: 80, y: 28,
-      text: "Aplican estilos según el tamaño o tipo de pantalla.<code>@media (max-width: 768px) { ... }</code>" },
+      text: "Aplican estilos solo cuando se cumple una condición: ancho, orientación o incluso modo oscuro. Son la base del diseño responsivo, ya sea <b>mobile first</b> (min-width) o <b>desktop first</b> (max-width).<code>@media (max-width: 768px) {\n  .menu { display: none; }\n}</code>" },
     { kanji: "七", title: "Pseudo elementos", x: 88, y: 50,
-      text: "Estilizan o crean partes de un elemento.<code>p::first-letter  ·  div::before  ·  div::after</code>" },
+      text: "Se escriben con <b>dos puntos dobles</b>. <code>::before</code> y <code>::after</code> insertan contenido decorativo mediante la propiedad content; <code>::first-letter</code> y <code>::first-line</code> estilizan partes del texto; <code>::selection</code> cambia el color al seleccionar.<code>.titulo::after {\n  content: '桜';\n  color: pink;\n}</code>" },
     { kanji: "八", title: "Pseudo clases", x: 58, y: 62,
-      text: "Estilizan según el estado o la posición del elemento.<code>a:hover  ·  input:focus  ·  li:nth-child(2)</code>" },
+      text: "Usan <b>un solo dos puntos</b> y reaccionan al estado o la posición del elemento: <code>:hover</code> (cursor encima), <code>:focus</code> (seleccionado), <code>:active</code> (al hacer clic), <code>:first-child</code> y <code>:nth-child(n)</code> (posición en la lista).<code>a:hover { color: gold; }\nli:nth-child(odd) { background: #eee; }</code>" },
     { kanji: "九", title: "Z-index", x: 30, y: 62,
-      text: "Define qué elemento queda encima de otro. Solo funciona si el elemento tiene <b>position</b> distinto de static.<code>z-index: 10;</code>" }
+      text: "Controla el orden de apilamiento en el eje Z: el número mayor queda encima. Solo funciona en elementos con <b>position</b> distinto de static (o hijos de flex/grid). Un <b>contexto de apilamiento</b> impide que un hijo supere a elementos de otro contexto.<code>.modal {\n  position: fixed;\n  z-index: 1000;\n}</code>" }
 ];
 
 const container = document.getElementById("petals");
